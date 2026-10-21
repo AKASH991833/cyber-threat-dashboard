@@ -1,5 +1,10 @@
 # Cyber Threat Dashboard - Python (pandas + Streamlit)
 
+> **Live browser demo:** https://akash991833.github.io/cyber-threat-dashboard/ - zero-install version. The app in this folder is the pro-grade rebuild; run steps below.
+> **Repo:** https://github.com/AKASH991833/cyber-threat-dashboard
+
+![cyber-threat-dashboard in action](../screenshots/dashboard-dark.png)
+
 The pro-grade version of the browser demo: real log parsing, incident detection and IP analytics computed by pandas, presented in Streamlit.
 
 ## Stack
