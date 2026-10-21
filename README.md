@@ -44,3 +44,7 @@ node tests/run.mjs
 
 ![Dark theme](screenshots/dashboard-dark.png)
 ![Feed on mobile](screenshots/feed-mobile.png)
+
+## Python version (pandas + Streamlit)
+
+A pro-grade rebuild with real log parsing and incident detection lives in [`python-app/`](python-app/) - see its README for run steps. The browser demo above stays the zero-install option.
