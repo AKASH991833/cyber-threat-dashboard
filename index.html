@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cyber Threat Dashboard - simulated SOC monitoring</title>
+<meta name="description" content="A simulated security operations dashboard: live threat event feed, severity analytics, source tracking, alert rules and trend charts. Honest simulation, no fake real data.">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 8 5.5v5c0 4.5 1.7 7.5 4 9 2.3-1.5 4-4.5 4-9v-5Z"/><path d="M12 9v3.5"/><circle cx="12" cy="15.5" r=".6" fill="currentColor" stroke="none"/></svg></span><span>Cyber Threat Dashboard</span></a>
+    <nav class="site-nav">
+      <a class="nav-link" href="#feed">Feed</a>
+      <a class="nav-link" href="#analytics">Analytics</a>
+      <a class="nav-link" href="#limits">Limits</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-ghost btn-icon" data-theme-toggle aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></button>
+      <button class="btn btn-ghost btn-icon menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero wrap rise">
+    <span class="hero-eyebrow">Simulated data - clearly labeled</span>
+    <h1>A security operations center, simulated</h1>
+    <p class="lede">A live-looking threat feed with realistic event types, severities, sources and alert rules. Built for learning SOC workflows: triage, filtering, severity analytics and trend watching. Every event is generated on your device - nothing here is real traffic.</p>
+    <div class="row row-wrap mt16">
+      <button class="btn btn-primary btn-lg" id="btnStart">Start the feed</button>
+      <label class="small muted row" style="gap:6px">Event rate
+        <select class="input" id="rateSel" style="width:auto"><option value="4000">Calm (1/4s)</option><option value="1500" selected>Busy (1.5s)</option><option value="500">Under attack (2/s)</option></select>
+      </label>
+    </div>
+  </section>
+
+  <section class="wrap rise rise-1 mt16">
+    <div class="grid grid-4 mb16" id="kpis"></div>
+  </section>
+
+  <section class="wrap mt16" id="analytics">
+    <div class="grid grid-2 mb16">
+      <div class="card"><div class="card-title">Events per minute</div><div class="card-sub">Rolling 10 minutes, by severity</div><div style="height:240px"><canvas id="chTime"></canvas></div></div>
+      <div class="card"><div class="card-title">Severity mix</div><div class="card-sub">All events in the current session</div><div style="height:240px"><canvas id="chSev"></canvas></div></div>
+    </div>
+    <div class="grid grid-2 mb16">
+      <div class="card"><div class="card-title">Top attack types</div><div class="card-sub">Current session</div><div style="height:240px"><canvas id="chType"></canvas></div></div>
+      <div class="card"><div class="card-title">Top source networks</div><div class="card-sub">Simulated origins</div><div class="tbl-wrap" style="border:none"><table class="tbl" id="tblSrc"></table></div></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="feed">
+    <div class="card">
+      <div class="row row-wrap spread">
+        <div><div class="card-title">Threat feed</div><div class="card-sub mb0" id="feedMeta">Paused</div></div>
+        <div class="row row-wrap">
+          <select class="input" id="fltSev" style="width:auto"><option value="">All severities</option><option>critical</option><option>high</option><option>medium</option><option>low</option></select>
+          <input class="input" id="fltQ" placeholder="Filter type or source..." style="width:180px">
+          <button class="btn btn-ghost btn-sm" id="btnExport">Export JSON</button>
+        </div>
+      </div>
+      <div class="tbl-wrap mt16" style="border:none;max-height:420px;overflow-y:auto"><table class="tbl" id="tblFeed"></table></div>
+    </div>
+    <div class="limit-box mt16"><b>Honest limits:</b> every event on this dashboard is simulated in your browser - it is a training and demo tool for SOC workflows, not connected to any real network, honeypot or threat intel feed. Patterns are scripted randomness, not detected attacks.</div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="wrap">Cyber Threat Dashboard - simulated SOC for learning, clearly not real telemetry</div></footer>
+<script src="vendor/chart.umd.min.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
